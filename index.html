@@ -14,17 +14,19 @@
 
   <!-- Floating Social Buttons -->
   <div class="float-btn">
-    <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://github.com/Souvik-Dey-2029" target="_blank"><i class="fab fa-github"></i></a>
     <a href="https://www.linkedin.com/in/souvik-dey-400497366?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="mailto:souvikbwn12@gmail.com"><i class="fas fa-envelope"></i></a>
     <a href="#top"><i class="fas fa-arrow-up"></i></a>
+    <!-- Dark/Light Mode Toggle -->
+    <a href="#" id="theme-toggle"><i class="fas fa-adjust"></i></a>
   </div>
 
   <!-- Hero Section -->
   <section class="hero" id="top">
     <div class="hero-content">
       <h1>Hello, I'm <span>Souvik</span></h1>
-      <p>Aspiring AI & ML Engineer | Turning Code into Innovation</p>
+      <p id="typing-text"></p> <!-- Typing animation -->
       <a href="#projects" class="btn-primary">Explore Projects</a>
     </div>
   </section>
@@ -33,13 +35,51 @@
   <section class="about" id="about">
     <h2>About Me</h2>
     <div class="about-container">
-      <img src="img/profile.jpg" alt="Souvik" class="profile-pic">
+      <img src="img/Profile.jpg" alt="Souvik" class="profile-pic">
       <div class="about-text">
         <p>I am Souvik from West Bengal, currently pursuing B.Tech in CSE (AI & ML) at <strong>Haldia Institute of Technology</strong>.  
            Started coding with Java in class 10 and developed a passion for programming and AI.</p>
         <p>My goal is to build real-world AI projects and innovative solutions that make an impact.</p>
       </div>
       <img src="img/college.jpeg" alt="College" class="college-pic">
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <div class="skill">
+        <p>Python</p>
+        <div class="skill-bar"><div class="skill-progress" data-progress="40%"></div></div>
+      </div>
+      <div class="skill">
+        <p>HTML/CSS</p>
+        <div class="skill-bar"><div class="skill-progress" data-progress="30%"></div></div>
+      </div>
+      <div class="skill">
+        <p>Java</p>
+        <div class="skill-bar"><div class="skill-progress" data-progress="50%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey / Timeline Section -->
+  <section class="timeline" id="timeline">
+    <h2>My Journey</h2>
+    <div class="timeline-container">
+      <div class="timeline-item">
+        <span class="timeline-year">2020</span>
+        <p>Started learning Java basics (classes 8–10)</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2022</span>
+        <p>Completed ICSE Class 10 (basic coding knowledge)</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2025</span>
+        <p>Started B.Tech in CSE (AI & ML) and began learning HTML, CSS, Python</p>
+      </div>
     </div>
   </section>
 
@@ -59,6 +99,16 @@
         <h3>Chatbot Assistant</h3>
         <p>Coming soon...</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="achievements" id="achievements">
+    <h2>Achievements</h2>
+    <div class="achievements-container">
+      <div class="achievement-card">Coming soon…</div>
+      <div class="achievement-card">Coming soon…</div>
+      <div class="achievement-card">Coming soon…</div>
     </div>
   </section>
 
@@ -92,9 +142,37 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="script.js"></script>
   <script src="chatbot.js"></script>
+  <script src="upgrade.js"></script> <!-- New upgrade features -->
+  <script>
+    // ===== Typing animation =====
+    const typingText = document.getElementById("typing-text");
+    const phrases = ["Aspiring AI & ML Engineer", "Turning Code into Innovation", "Learning Python & Web Development"];
+    let i = 0, j = 0, currentPhrase = [], isDeleting = false, speed = 100;
 
+    function type() {
+      if(i >= phrases.length) i = 0;
+      let fullText = phrases[i];
+      if(!isDeleting){
+        currentPhrase.push(fullText[j]);
+        typingText.textContent = currentPhrase.join("");
+        j++;
+        if(j === fullText.length){
+          isDeleting = true;
+          setTimeout(type, 1000);
+          return;
+        }
+      } else {
+        currentPhrase.pop();
+        typingText.textContent = currentPhrase.join("");
+        if(currentPhrase.length === 0){
+          isDeleting = false;
+          i++;
+          j = 0;
+        }
+      }
+      setTimeout(type, isDeleting ? speed/2 : speed);
+    }
+    type();
+  </script>
 </body>
 </html>
-
-
-
